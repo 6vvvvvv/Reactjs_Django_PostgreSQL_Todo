@@ -25,3 +25,6 @@
 
 ## Step7:Click On The Task and Delete The Task
 ![image](https://github.com/6vvvvvv/Reactjs_Django_Todo/blob/master/images/Step7-delete.png)
+
+## Step8:PostgreSQL States
+![image](https://github.com/6vvvvvv/Reactjs_Django_Todo/blob/master/images/Step8-PostgreSQL%20State.jpg)
