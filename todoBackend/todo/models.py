@@ -4,5 +4,16 @@ from django.db import models
 
 
 class Todo(models.Model):
-    key = models.IntegerField(default="0")
-    items = models.CharField(max_length=30, default="")
+    id = models.CharField(
+        primary_key=True, max_length=200, default="")
+    title = models.CharField(max_length=30, default="")
+    iscompleted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+    @classmethod
+    def create_todo(cls, id, title, iscompleted):
+        event = cls(
+            id=id, title=title, iscompleted=iscompleted)
+        return event
