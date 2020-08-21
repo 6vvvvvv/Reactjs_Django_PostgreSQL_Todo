@@ -71,14 +71,14 @@ class App extends Component {
           </div>
           <br></br>
           <div align="center">
-            <p>
-              {" "}
-              Count : {getCount} 
-            </p>
+            <p> Count : {getCount}</p>
           </div>
         </form>
         <hr></hr>
-        <List />
+        <div className="list-container">
+          {" "}
+          <List />
+        </div>
       </div>
     );
   }

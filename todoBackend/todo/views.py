@@ -22,7 +22,7 @@ def Additem(request):
             checkTitle = Todo.objects.get(title=body['data'])
             return JsonResponse({"msg": "Data exists,please enter again.", "status": "0"})
         except Todo.DoesNotExist as e:
-            item = Todo.create_todo(identity, body["data"], True)
+            item = Todo.create_todo(identity, body["data"], False)
             body["id"] = json.dumps(identity)
 
             item.save()
