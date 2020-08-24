@@ -52,12 +52,11 @@ class App extends Component {
 
     return (
       <div className="container">
-        <div className="center">
-          <h1 align="center">TODOLIST</h1>
+        <div className="title-container">
+          <h1>TODOLIST</h1>
         </div>
 
         <form className="form-horizontal" onSubmit={this.onSubmit}>
-          <br></br>
           <input
             type="text"
             className="form-control"
@@ -67,16 +66,15 @@ class App extends Component {
             value={this.state.text}
           ></input>
           <div>
-            <button className="btn btn-primary">Submit</button>
+            <button className="btn btn-primary subbtn">Submit</button>
           </div>
           <br></br>
-          <div align="center">
+          <div className="count">
             <p> Count : {getCount}</p>
           </div>
         </form>
         <hr></hr>
         <div className="list-container">
-          {" "}
           <List />
         </div>
       </div>

@@ -1,0 +1,27 @@
+span button {
+  background-color: rgb(43, 176, 243);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1px;
+  margin-left: 2px;
+  opacity: 0.6;
+}
+
+input {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  
+}
+
+span button:hover {
+  background-color: rgb(43, 176, 243);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1px;
+  margin-left: 2px;
+  opacity: 1;
+}

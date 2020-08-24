@@ -3,15 +3,15 @@ import {
   DISPLAYFAIL,
 } from "../actions/action-types/todo-actions";
 
-const initialState = {};
+const initialState = { status: "" };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case DISPLAYDBSUCCESS:
-      return console.log("Loading Success");
+      return { status: action.payload };
 
     case DISPLAYFAIL:
-      return console.log("Loading Error");
+      return { status: action.payload };
     default:
       return state;
   }

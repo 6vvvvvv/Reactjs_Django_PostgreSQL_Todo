@@ -1,20 +1,47 @@
-ul > li:hover {
-  color: #333;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 5px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  transition: background-color 0.5s ease-out;
-  cursor: pointer;
-}
-
-ul > li {
-  list-style-type: none;
-  
-}
-
 ul {
   margin: 15px;
   padding: 0;
-  
 }
+
+ul li {
+  list-style-type: none;
+  margin-top: 5px;
+}
+
+ul li:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1px 1px 1px;
+  width: 280px;
+  height: 30px;
+  border-radius: 5px;
+  transition: background-color 0.5s ease-out;
+  cursor: pointer;
+  opacity: 1;
+}
+
+li button {
+  opacity: 0;
+  border: none;
+}
+
+li:hover button {
+  background-color: rgb(43, 176, 243);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1px;
+  margin-left: 2px;
+  opacity: 0.6;
+}
+
+li:hover button:hover {
+  background-color: rgb(43, 176, 243);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1px;
+  margin-left: 2px;
+  opacity: 1;
+}
+
+

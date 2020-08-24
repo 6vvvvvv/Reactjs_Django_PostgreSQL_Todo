@@ -8,6 +8,6 @@ class TodoSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'title',
-            'iscompleted'
+            'isedited'
         )
         
