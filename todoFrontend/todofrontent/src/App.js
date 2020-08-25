@@ -1,9 +1,11 @@
 import "./App.css";
 import React, { Component } from "react";
 import List from "./component/List.js";
-import { addItem } from "../src/redux/actions/action-creators/todoActionCreators";
 import { connect } from "react-redux";
-import { todo_add_fetch_tobackend } from "./redux/actions/thunk/toBackThunk";
+import {
+  todo_add_fetch_tobackend,
+  todo_list_fetch_frombackend,
+} from "./redux/actions/thunk/toBackThunk";
 import { getCount } from "./redux/reducers/todoReducer";
 
 class App extends Component {
@@ -15,13 +17,10 @@ class App extends Component {
   }
 
   // componentDidMount = async () => {
+  //   const { todo_list_fetch_frombackend } = this.props;
+
   //   try {
-  //     const res = await fetch("http://127.0.0.1:8000/api/todolist/");
-  //     var result = await res.json();
-  //     console.log("from backend",result);
-  //     this.setState({
-  //       jsitems: result,
-  //     });
+  //     todo_list_fetch_frombackend();
   //   } catch (e) {
   //     console.log(e);
   //   }
@@ -88,6 +87,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   todo_add_fetch_tobackend: (task) => dispatch(todo_add_fetch_tobackend(task)),
+  todo_list_fetch_frombackend: () => dispatch(todo_list_fetch_frombackend()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

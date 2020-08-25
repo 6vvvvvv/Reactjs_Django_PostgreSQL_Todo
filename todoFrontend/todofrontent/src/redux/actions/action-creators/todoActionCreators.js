@@ -1,5 +1,4 @@
-
-import { ADD, EDIT, DELETE } from "../action-types/todo-actions";
+import { ADD, EDIT, DELETE, UPDATE, SHOW } from "../action-types/todo-actions";
 
 export const addItem = (payload) => ({
   type: ADD,
@@ -13,5 +12,15 @@ export const editItem = (payload) => ({
 
 export const deleteItem = (payload) => ({
   type: DELETE,
+  payload,
+});
+
+export const updateItem = (payload) => ({
+  type: UPDATE,
+  payload,
+});
+
+export const showItem = (payload) => ({
+  type: SHOW,
   payload,
 });

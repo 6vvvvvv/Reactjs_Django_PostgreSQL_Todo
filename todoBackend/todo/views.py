@@ -1,6 +1,4 @@
-from rest_framework import viewsets
 from .models import Todo
-from .serializers import TodoSerializer
 from django.http import JsonResponse
 import json
 import time
@@ -8,9 +6,11 @@ import random
 from django.db.models import Case, Value, When
 
 
-class ListTodo(viewsets.ModelViewSet):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer(queryset)
+def ListTodo(request):
+    if(request.method == 'GET'):
+        queryset = Todo.objects.all().values()
+
+        return JsonResponse({"msg": "List request success", "tofrontend": list(queryset)})
 
 
 def Additem(request):
@@ -24,9 +24,11 @@ def Additem(request):
             return JsonResponse({"msg": "Data exists,please enter again.", "status": "0"})
         except Todo.DoesNotExist as e:
             item = Todo.create_todo(identity, body["data"], False)
-            body["id"] = json.dumps(identity)
-            body["isedited"] = False
+
             item.save()
+
+            body["id"] = identity
+            body["isedited"] = False
             return JsonResponse({"msg": "Add request has been saved successfully.", "tofrontend": body, "status": "1"})
 
 
@@ -34,7 +36,13 @@ def Modifyitem(request):
     if(request.method == 'PUT'):
         body = json.loads(request.body)
         print("********request body*******", body)
-        data = body['data']['data']
+
+        # if(body['data']['data']):
+        #     data = body['data']['data']
+        # else:
+        #     data = body['data']['title']
+
+        data =body['data']['data']
 
         Todo.objects.filter(title=data).update(isedited=Case(
             When(isedited=False, then=Value(True)),
@@ -42,7 +50,20 @@ def Modifyitem(request):
 
         edittask = Todo.objects.filter(title=data).values()
 
-        return JsonResponse({"msg": "put success", "tofrontend": list(edittask)})
+        return JsonResponse({"msg": "toggle success", "tofrontend": list(edittask)})
+
+
+def Updateitem(request):
+    if(request.method == 'PUT'):
+        body = json.loads(request.body)
+        print("********request body*******", body)
+        changetitle = body['item'][0]
+        changedid = body['item'][1]
+        Todo.objects.filter(id=changedid).update(title=changetitle)
+
+        changetask = Todo.objects.filter(id=changedid).values()
+
+        return JsonResponse({"msg": "update success", "tofrontend": list(changetask)})
 
 
 def Deleteitem(request):

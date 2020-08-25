@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./Edit.css";
+import { connect } from "react-redux";
+import { todo_update_fetch_tobackend } from "../redux/actions/thunk/toBackThunk";
 
 class Edit extends Component {
   constructor(props) {
@@ -16,12 +18,20 @@ class Edit extends Component {
     });
   };
 
-  confirmChange = () => {
-    console.log("you have confirmed");
+  updateChange = () => {
+    console.log("you have updated");
+    const { todo_update_fetch_tobackend } = this.props;
+    const contentid = this.props.contentid;
+    console.log("contentid", contentid);
+    const updateitem = [this.state.text, contentid];
+    todo_update_fetch_tobackend(updateitem);
   };
 
   cancelChange = () => {
     console.log("you hanve cancelled");
+    this.setState({
+      text: "",
+    });
   };
 
   render() {
@@ -33,12 +43,17 @@ class Edit extends Component {
           onChange={this.onchange}
         ></input>
         <span>
-        <button  onClick={this.confirmChange}>Confirm</button>
-        <button  onClick={this.cancelChange}>Cancel</button>
+          <button onClick={this.updateChange}>Update</button>
+          <button onClick={this.cancelChange}>Cancel</button>
         </span>
       </div>
     );
   }
 }
 
-export default Edit;
+const mapDispatchToProps = (dispatch) => ({
+  todo_update_fetch_tobackend: (updateitem) =>
+    dispatch(todo_update_fetch_tobackend(updateitem)),
+});
+
+export default connect(null, mapDispatchToProps)(Edit);

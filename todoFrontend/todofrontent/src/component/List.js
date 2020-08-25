@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./List.css";
 import { connect } from "react-redux";
-import { getItems, getEditlist } from "../redux/reducers/todoReducer";
-import Axios from "axios";
+import {
+  getItems,
+  getEditlist,
+  getShowlist,
+} from "../redux/reducers/todoReducer";
 import {
   todo_delete_fetch_tobackend,
   todo_edit_fetch_tobackend,
@@ -11,13 +14,8 @@ import Edit from "./Edit";
 import { editItem } from "../redux/actions/action-creators/todoActionCreators";
 
 class List extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   delclick = (item) => {
     const { todo_delete_fetch_tobackend } = this.props;
-
     todo_delete_fetch_tobackend(item);
   };
 
@@ -27,12 +25,32 @@ class List extends Component {
   };
 
   render() {
-    const { getItems, getEditlist } = this.props;
- 
+    const { getItems, getEditlist, getShowlist } = this.props;
 
     return (
       <div>
         <ul>
+          {/* {getShowlist &&
+            getShowlist.map((item) => {
+              return (
+                <div>
+                  <li key={item.id}>
+                    {item.title}{" "}
+                    <button onClick={this.delclick.bind(this, item)}>
+                      Del
+                    </button>
+                    <button onClick={this.editclick.bind(this, item)}>
+                      Edit
+                    </button>
+                  </li>
+                  {getEditlist &&
+                  getEditlist.id === item.id &&
+                  getEditlist.isedited ? (
+                    <Edit contentid={item.id} />
+                  ) : null}
+                </div>
+              );
+            })} */}
           {getItems &&
             getItems.map((item) => {
               return (
@@ -46,8 +64,10 @@ class List extends Component {
                       Edit
                     </button>
                   </li>
-                  { getEditlist.isedited ? (
-                    <Edit />
+                  {getEditlist &&
+                  getEditlist.id === item.id &&
+                  getEditlist.isedited ? (
+                    <Edit contentid={item.id} />
                   ) : null}
                 </div>
               );
@@ -61,6 +81,7 @@ class List extends Component {
 const mapStateToProps = (state) => ({
   getItems: getItems(state),
   getEditlist: getEditlist(state),
+  getShowlist: getShowlist(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -76,3 +97,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);
 
+// getEditlist && getEditlist.isedited &&
