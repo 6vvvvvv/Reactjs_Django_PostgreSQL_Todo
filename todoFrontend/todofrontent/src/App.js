@@ -1,12 +1,18 @@
 import "./App.css";
-import React, { Component } from "react";
+import React, {
+  Component
+} from "react";
 import List from "./component/List.js";
-import { connect } from "react-redux";
+import {
+  connect
+} from "react-redux";
 import {
   todo_add_fetch_tobackend,
   todo_list_fetch_frombackend,
 } from "./redux/actions/thunk/toBackThunk";
-import { getCount } from "./redux/reducers/todoReducer";
+import {
+  getCount
+} from "./redux/reducers/todoReducer";
 
 class App extends Component {
   constructor(props) {
@@ -34,8 +40,12 @@ class App extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { todo_add_fetch_tobackend } = this.props;
-    const { text } = this.state;
+    const {
+      todo_add_fetch_tobackend
+    } = this.props;
+    const {
+      text
+    } = this.state;
     if (text === "") {
       alert("Please don't make it empty");
     } else {
@@ -47,7 +57,9 @@ class App extends Component {
   };
 
   render() {
-    const { getCount } = this.props;
+    const {
+      getCount
+    } = this.props;
 
     return (
       <div className="container">
@@ -76,6 +88,12 @@ class App extends Component {
         <div className="list-container">
           <List />
         </div>
+        <GithubCorner
+          href="https://github.com/6vvvvvv/Reactjs_Django_Todo"
+          bannerColor="#303030"
+          size={80}
+          direction="right"
+        />
       </div>
     );
   }
