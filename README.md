@@ -1,4 +1,4 @@
-# Reactjs_Django
+# Reactjs_Django_PostgreSQL_Todo
  
 ## Make sure you are under vituralenvironment(pipenv shell) when run Backend code. 
  
