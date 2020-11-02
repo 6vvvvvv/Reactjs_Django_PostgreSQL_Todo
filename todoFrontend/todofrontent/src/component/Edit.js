@@ -6,7 +6,6 @@ import { todo_update_fetch_tobackend } from "../redux/actions/thunk/toBackThunk"
 class Edit extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       text: "",
     };

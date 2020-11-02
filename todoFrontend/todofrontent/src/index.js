@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 
 const middlewares = [thunk, logger];
 
-export const store = createStore(rootReducer, applyMiddleware(...middlewares));
+const store = createStore(rootReducer, applyMiddleware(...middlewares));
 console.log("origin store when firstly loaded:", store.getState());
 
 ReactDOM.render(

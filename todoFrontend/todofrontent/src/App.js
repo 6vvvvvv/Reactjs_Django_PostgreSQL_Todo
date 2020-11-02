@@ -1,18 +1,13 @@
 import "./App.css";
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
 import List from "./component/List.js";
-import {
-  connect
-} from "react-redux";
+import { connect } from "react-redux";
 import {
   todo_add_fetch_tobackend,
   todo_list_fetch_frombackend,
 } from "./redux/actions/thunk/toBackThunk";
-import {
-  getCount
-} from "./redux/reducers/todoReducer";
+import { getCount } from "./redux/reducers/todoReducer";
+import GithubCorner from "react-github-corner";
 
 class App extends Component {
   constructor(props) {
@@ -22,16 +17,6 @@ class App extends Component {
     };
   }
 
-  // componentDidMount = async () => {
-  //   const { todo_list_fetch_frombackend } = this.props;
-
-  //   try {
-  //     todo_list_fetch_frombackend();
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
   onChange = (e) => {
     this.setState({
       text: e.target.value,
@@ -40,12 +25,8 @@ class App extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const {
-      todo_add_fetch_tobackend
-    } = this.props;
-    const {
-      text
-    } = this.state;
+    const { todo_add_fetch_tobackend } = this.props;
+    const { text } = this.state;
     if (text === "") {
       alert("Please don't make it empty");
     } else {
@@ -57,9 +38,7 @@ class App extends Component {
   };
 
   render() {
-    const {
-      getCount
-    } = this.props;
+    const { getCount } = this.props;
 
     return (
       <div className="container">
@@ -91,7 +70,7 @@ class App extends Component {
         <GithubCorner
           href="https://github.com/6vvvvvv/Reactjs_Django_Todo"
           bannerColor="#303030"
-          size={80}
+          size={150}
           direction="right"
         />
       </div>

@@ -25,44 +25,19 @@ class List extends Component {
   };
 
   render() {
-    const { getItems, getEditlist, getShowlist } = this.props;
+    const { getItems, getEditlist } = this.props;
 
     return (
       <div>
         <ul>
-          {/* {getShowlist &&
-            getShowlist.map((item) => {
-              return (
-                <div>
-                  <li key={item.id}>
-                    {item.title}{" "}
-                    <button onClick={this.delclick.bind(this, item)}>
-                      Del
-                    </button>
-                    <button onClick={this.editclick.bind(this, item)}>
-                      Edit
-                    </button>
-                  </li>
-                  {getEditlist &&
-                  getEditlist.id === item.id &&
-                  getEditlist.isedited ? (
-                    <Edit contentid={item.id} />
-                  ) : null}
-                </div>
-              );
-            })} */}
           {getItems &&
             getItems.map((item) => {
               return (
                 <div>
                   <li key={item.id}>
                     {item.data}{" "}
-                    <button onClick={this.delclick.bind(this, item)}>
-                      Del
-                    </button>
-                    <button onClick={this.editclick.bind(this, item)}>
-                      Edit
-                    </button>
+                    <button onClick={() => this.delclick(item)}>Del</button>
+                    <button onClick={() => this.editclick(item)}>Edit</button>
                   </li>
                   {getEditlist &&
                   getEditlist.id === item.id &&
@@ -96,5 +71,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);
-
-// getEditlist && getEditlist.isedited &&
